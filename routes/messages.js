@@ -1,5 +1,6 @@
 const express = require("express");
 const router = express.Router();
+const { v4: uuidv4 } = require("uuid");
 
 // Example data
 const messages = {
@@ -21,6 +22,17 @@ router.get("/", (req, res, next) => {
 
 router.get("/:messageId", (req, res, next) => {
   return res.send(messages[req.params.messageId]);
+});
+
+router.post("/", (req, res, next) => {
+  const id = uuidv4();
+  const message = {
+    id,
+    text: req.body.text,
+  };
+
+  messages[id] = message;
+  return res.send(message);
 });
 
 module.exports = router;
