@@ -3,7 +3,7 @@ const router = express.Router();
 const { v4: uuidv4 } = require("uuid");
 
 // Example data
-const messages = {
+let messages = {
   1: {
     id: "1",
     text: "Hello World",
@@ -32,6 +32,14 @@ router.post("/", (req, res, next) => {
   };
 
   messages[id] = message;
+  return res.send(message);
+});
+
+router.delete("/:messageId", (req, res, next) => {
+  const { [req.params.messageId]: message, ...otherMessages } = messages;
+
+  messages = otherMessages;
+
   return res.send(message);
 });
 
