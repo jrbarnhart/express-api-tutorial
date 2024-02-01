@@ -1,7 +1,7 @@
 const express = require("express");
 const router = express.Router();
 
-// Example data for users
+// Example data
 const users = {
   1: {
     id: "1",
@@ -10,19 +10,6 @@ const users = {
   2: {
     id: "2",
     username: "Dave Davids",
-  },
-};
-
-const messages = {
-  1: {
-    id: "1",
-    text: "Hello World",
-    userId: "1",
-  },
-  2: {
-    id: "2",
-    text: "By World",
-    userId: "2",
   },
 };
 
